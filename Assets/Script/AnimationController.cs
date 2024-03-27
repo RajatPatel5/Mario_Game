@@ -38,8 +38,9 @@ public class AnimationController : MonoBehaviour
     {
         if (IsGrounded)
         {
+           
             Player_Animation.SetTrigger("Jump");
-            Player.velocity = new Vector3(0f, 10f, 0);
+            Player.velocity = new Vector3(0f,10f, 1f);
             IsGrounded = false;
         }
         
@@ -47,9 +48,10 @@ public class AnimationController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Base"))
+        if(collision.gameObject.CompareTag("Base") || collision.gameObject.CompareTag("HardBlocks"))
         {
             IsGrounded=true;
+            Player_Animation.ResetTrigger("Jump");
         }
     }
 }
