@@ -9,6 +9,7 @@ TagManager:
   - pipes
   - HardBlocks
   - Coin
+  - Attack
   layers:
   - Default
   - TransparentFX

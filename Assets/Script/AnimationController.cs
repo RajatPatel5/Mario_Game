@@ -10,6 +10,7 @@ public class AnimationController : MonoBehaviour
     public FixedJoystick fixedJoystick;
     public Rigidbody2D Player;
     public bool IsGrounded; 
+   
   
 
     // Start is called before the first frame update
@@ -44,6 +45,15 @@ public class AnimationController : MonoBehaviour
             IsGrounded = false;
         }
         
+    }
+
+    public void Player_Attack()
+    {
+        if (IsGrounded)
+        {
+            Player_Animation.SetTrigger("Attack");
+            
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
