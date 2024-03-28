@@ -19,9 +19,19 @@ public class JoyStick_Player : MonoBehaviour
     public float Enemy_postion_onexit;
     public float Player_postion_onexit;
     public float Distance;
+    public Enemy_AnimationController Enemy_AnimationController;
+    public bool IsAnimationOver = false;
+    public float player_health = 5;
+    public Rigidbody2D player_RB;
+    public AnimationController Player_Animation;
 
 
     public Vector3 currentTargetPosition;
+
+    private void Start()
+    {
+        player_RB = GetComponent<Rigidbody2D>();
+    }
 
     void Update()   
     {
@@ -73,11 +83,13 @@ public class JoyStick_Player : MonoBehaviour
                 Quaternion NewRotation_2 = Quaternion.Euler(0, 180, 0);
                 Enemy.transform.rotation = NewRotation_2;
                 EnemymovetoPlayer();
-
-
             }
-        }   
+
+        }
+          
     }
+
+
     public void OnTriggerStay2D(Collider2D col2)
     {
         if (col2.gameObject.CompareTag("Attack"))
@@ -87,7 +99,7 @@ public class JoyStick_Player : MonoBehaviour
             
             if (Distance < 0.3)
             {
-                Debug.Log("Animation  call");
+                Enemy_AnimationController.Enemy_Attack();
             }
         }
     }
@@ -106,8 +118,36 @@ public class JoyStick_Player : MonoBehaviour
 
     }
 
+ 
+
+
+
     public void EnemymovetoPlayer()
     {
         Enemy.currentTargetPosition = Player_2;
     }
+
+    public void AttackAnimationOver()
+    {
+        IsAnimationOver = true;
+    }
+
+    public void OnEnemyAttack()
+    {
+         
+        if(player_health == 0)
+        {
+            player_RB.constraints = RigidbodyConstraints2D.FreezeAll;
+            Player_Animation.Player_dead(); 
+           // player.SetActive(false);
+
+        }
+
+        else
+        {
+            player_health -= 1;
+            Debug.Log("player" + player_health);
+        }
+    }
+    
 }

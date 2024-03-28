@@ -17,10 +17,18 @@ public class Npc_player : MonoBehaviour
     public Animator enemy_animation;
     public GameObject Player;
     public float diff = 1;
+    public float Enemy_health = 3;
+    public Enemy_AnimationController Enemy_AnimationController;
+    public Rigidbody2D Enemy_RB;
+    public bool IsenemyattackAnimationOver = false;
+    
+
+
     void Start()
     {
         Tg1 = target_Position1;
         currentTargetPosition = target_Position1;
+        Enemy_RB = GetComponent<Rigidbody2D>();   
 
     }
 
@@ -64,5 +72,30 @@ public class Npc_player : MonoBehaviour
            
         }
     }
+
+    public void EnemyHealthDown()
+    {
+       
+       
+       
+
+        if (Enemy_health == 0)
+        {
+            Enemy_RB.constraints = RigidbodyConstraints2D.FreezeAll; 
+            Enemy_AnimationController.Enemy_dead();
+            Enemy.SetActive(false);
+        }
+        else
+        {
+            Enemy_health -= 1;
+            Debug.Log("enemy " + Enemy_health);
+        }
+    }
+
+   public void EnemyAnimtionOver()
+    {
+        IsenemyattackAnimationOver = true;
+    }
+    
 }
 

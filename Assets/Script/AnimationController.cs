@@ -9,7 +9,8 @@ public class AnimationController : MonoBehaviour
     public Animator Player_Animation;
     public FixedJoystick fixedJoystick;
     public Rigidbody2D Player;
-    public bool IsGrounded; 
+    public bool IsGrounded;
+    
    
   
 
@@ -55,6 +56,14 @@ public class AnimationController : MonoBehaviour
             
         }
     }
+
+    public void Player_dead()
+    {
+        Player_Animation.SetTrigger("Dead");
+    }
+
+ 
+
 
     public void OnCollisionEnter2D(Collision2D collision)
     {

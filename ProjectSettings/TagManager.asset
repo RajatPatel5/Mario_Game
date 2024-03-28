@@ -10,6 +10,8 @@ TagManager:
   - HardBlocks
   - Coin
   - Attack
+  - Enemy
+  - Player_
   layers:
   - Default
   - TransparentFX
