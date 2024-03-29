@@ -61,7 +61,11 @@ public class AnimationController : MonoBehaviour
         Player_Animation.SetTrigger("Dead");
     }
 
- 
+    public void Player_Hurt()
+    {
+        Player_Animation.SetTrigger("Hurt");
+    }
+    
 
 
     public void OnCollisionEnter2D(Collision2D collision)

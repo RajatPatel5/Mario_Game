@@ -14,8 +14,8 @@ TagManager:
   - Player_
   - Castle
   - GameOver
-  - Base_1
-  - Base_3
+  - Goomba
+  - Goomba_Head
   layers:
   - Default
   - TransparentFX

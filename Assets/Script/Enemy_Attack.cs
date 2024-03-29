@@ -9,8 +9,7 @@ public class Enemy_Attack : MonoBehaviour
     public Npc_player Enemy;
     public JoyStick_Player Player;
     public GamePlay_Canvas Canvas;
-    // Start is called before the first frame update
-   
+    
 
     public void OnTriggerEnter2D(Collider2D collision)
     {

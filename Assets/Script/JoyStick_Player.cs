@@ -25,9 +25,8 @@ public class JoyStick_Player : MonoBehaviour
     public Rigidbody2D player_RB;
     public AnimationController Player_Animation;
     public GamePlay_Canvas Canvas;
-    public Npc_player enemy2;
-    public Npc_player enemy3;
-   /* public event Action OnpLayerDead;*/
+    public GoombaWalk Goomba;
+   
 
     public Vector3 currentTargetPosition;
 
@@ -107,6 +106,7 @@ public class JoyStick_Player : MonoBehaviour
         }
 
        
+       
     }
 
 
@@ -129,8 +129,7 @@ public class JoyStick_Player : MonoBehaviour
             EnemymovetoPlayer();
         }
         if (col2.gameObject.CompareTag("Attack"))
-        { // Enemy_Position = Enemy.transform.position.x;
-            // Player_Position = player.transform.position.x;
+        { 
             Distance = Player_2.transform.position.x - Enemy.transform.position.x;
             
             if (Distance < 0.1)
@@ -153,11 +152,6 @@ public class JoyStick_Player : MonoBehaviour
 
 
     }
-
- 
-
-
-
     public void EnemymovetoPlayer()
     {
         Enemy.currentTargetPosition = Player_2;
@@ -193,6 +187,13 @@ public class JoyStick_Player : MonoBehaviour
             Canvas.GameOverEnable();
             player.SetActive(false);
         }
+
+        if(collision.gameObject.CompareTag("Goomba"))
+        {
+            Canvas.healthCount();
+            Player_Animation.Player_Hurt();
+
+        }
     }
 
     public void Playerdead()
@@ -200,4 +201,6 @@ public class JoyStick_Player : MonoBehaviour
         player.SetActive(false);
         Canvas.GameOverEnable();
     }
+
+    
 }
