@@ -50,7 +50,7 @@ public class GoombaWalk : MonoBehaviour
         animator.SetTrigger("Flat");
       //  GoombaEnemy.SetActive(false);
     }
-
+    //harshil 
    
     }
 
