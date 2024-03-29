@@ -13,7 +13,7 @@ public class GamePlay_Canvas : MonoBehaviour
     public Canvas GameStart_Canvas;
     public Canvas GameWin_Canvas;
     public Canvas GameOver_Canvas;
-    
+    public TextMeshProUGUI Health_txt;
 
 
     private void Start()
@@ -24,19 +24,7 @@ public class GamePlay_Canvas : MonoBehaviour
         GameStart_Canvas.enabled = true;
     }
     // Start is called before the first frame update
-    public void CoinCount()
-    {
-        string coinCountText = coinText.text.Replace("Coins: ", "");
-
-
-        int currentCoinCount = int.Parse(coinCountText);
-
-        currentCoinCount += 5;
-
-
-        coinText.text = currentCoinCount.ToString();
-
-    }
+   
 
     public void OnPlayBtnClick()
     {
@@ -62,6 +50,29 @@ public class GamePlay_Canvas : MonoBehaviour
     public void GameOverEnable()
     {
         GameOver_Canvas.enabled = true;
+    }
+    public void healthCount()
+    {
+        string healthCount_text = Health_txt.text.Replace("health","");
+
+        int currentHealth = int.Parse(healthCount_text);
+
+        currentHealth -= 20;
+
+        Health_txt.text = currentHealth.ToString();
+    }
+    public void CoinCount()
+    {
+        string coinCountText = coinText.text.Replace("Coins: ", "");
+
+
+        int currentCoinCount = int.Parse(coinCountText);
+
+        currentCoinCount += 5;
+
+
+        coinText.text = currentCoinCount.ToString();
+
     }
 }
 

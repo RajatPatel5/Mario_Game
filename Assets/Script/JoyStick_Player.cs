@@ -151,14 +151,6 @@ public class JoyStick_Player : MonoBehaviour
             Enemy.transform.rotation = NewRotation_2;
         }
 
-     //   if (collision.gameObject.CompareTag("Base_1"))
-     //   {
-     //       Enemy = enemy2;
-     //   }
-     //   if (collision.gameObject.CompareTag("Base_3"))
-     //   {
-     //       Enemy = enemy3;
-     //   }
 
     }
 

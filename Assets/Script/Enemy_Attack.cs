@@ -8,6 +8,7 @@ public class Enemy_Attack : MonoBehaviour
 {
     public Npc_player Enemy;
     public JoyStick_Player Player;
+    public GamePlay_Canvas Canvas;
     // Start is called before the first frame update
    
 
@@ -17,6 +18,7 @@ public class Enemy_Attack : MonoBehaviour
         {
             Player.OnEnemyAttack();
             Enemy.IsenemyattackAnimationOver = false;
+            Canvas.healthCount();
         }
     }
 
