@@ -24,9 +24,16 @@ public class JoyStick_Player : MonoBehaviour
     public float player_health = 5;
     public Rigidbody2D player_RB;
     public AnimationController Player_Animation;
-
+    public GamePlay_Canvas Canvas;
+    public Npc_player enemy2;
+    public Npc_player enemy3;
+   /* public event Action OnpLayerDead;*/
 
     public Vector3 currentTargetPosition;
+
+
+    public float minY = -2f;
+    public float maxY = 2f; 
 
     private void Start()
     {
@@ -35,7 +42,9 @@ public class JoyStick_Player : MonoBehaviour
 
     void Update()   
     {
-
+        float clampedY = Mathf.Clamp(transform.position.y, float.MinValue, maxY);
+        transform.position = new Vector3(transform.position.x, clampedY, transform.position.z);
+    
 
         if (fixedJoystick.Horizontal > 0.1f)
         {
@@ -69,6 +78,11 @@ public class JoyStick_Player : MonoBehaviour
 
         if(col.gameObject.CompareTag("Attack"))
         {
+         //  var temp = col.gameObject.GetComponent<Npc_player>(); 
+         //   if (temp != null)
+         //   {
+         //       Enemy = temp;
+         //   }
            Enemy_Position = Enemy.transform.position.x;
            Player_Position = player.transform.position.x;
 
@@ -87,18 +101,41 @@ public class JoyStick_Player : MonoBehaviour
 
         }
           
+        if(col.gameObject.CompareTag("Castle"))
+        {
+            Canvas.OnGameWin();
+        }
+
+       
     }
 
 
     public void OnTriggerStay2D(Collider2D col2)
     {
+
+        Enemy_Position = Enemy.transform.position.x;
+        Player_Position = player.transform.position.x;
+
+        if (Player_Position > Enemy_Position)
+        {
+            Quaternion newRotation_1 = Quaternion.Euler(0, 0, 0);
+            Enemy.transform.rotation = newRotation_1;
+            EnemymovetoPlayer();
+        }
+        else
+        {
+            Quaternion NewRotation_2 = Quaternion.Euler(0, 180, 0);
+            Enemy.transform.rotation = NewRotation_2;
+            EnemymovetoPlayer();
+        }
         if (col2.gameObject.CompareTag("Attack"))
         { // Enemy_Position = Enemy.transform.position.x;
             // Player_Position = player.transform.position.x;
             Distance = Player_2.transform.position.x - Enemy.transform.position.x;
             
-            if (Distance < 0.3)
+            if (Distance < 0.1)
             {
+                Debug.Log("attack");
                 Enemy_AnimationController.Enemy_Attack();
             }
         }
@@ -112,9 +149,16 @@ public class JoyStick_Player : MonoBehaviour
             Enemy.currentTargetPosition = Enemy.Tg1;
             Quaternion NewRotation_2 = Quaternion.Euler(0, 180, 0);
             Enemy.transform.rotation = NewRotation_2;
-
-
         }
+
+     //   if (collision.gameObject.CompareTag("Base_1"))
+     //   {
+     //       Enemy = enemy2;
+     //   }
+     //   if (collision.gameObject.CompareTag("Base_3"))
+     //   {
+     //       Enemy = enemy3;
+     //   }
 
     }
 
@@ -139,7 +183,7 @@ public class JoyStick_Player : MonoBehaviour
         {
             player_RB.constraints = RigidbodyConstraints2D.FreezeAll;
             Player_Animation.Player_dead(); 
-           // player.SetActive(false);
+           
 
         }
 
@@ -149,5 +193,19 @@ public class JoyStick_Player : MonoBehaviour
             Debug.Log("player" + player_health);
         }
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("GameOver"))
+        {
+            Canvas.GameOverEnable();
+            player.SetActive(false);
+        }
+    }
+
+    public void Playerdead()
+    {
+        player.SetActive(false);
+        Canvas.GameOverEnable();
+    }
 }

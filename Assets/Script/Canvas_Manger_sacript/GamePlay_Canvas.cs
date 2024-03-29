@@ -1,13 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GamePlay_Canvas : MonoBehaviour
 {
 
     public TextMeshProUGUI coinText;
     public Canvas Gameplay_canvas;
+    public Canvas GameStart_Canvas;
+    public Canvas GameWin_Canvas;
+    public Canvas GameOver_Canvas;
+    
+
+
+    private void Start()
+    {
+        Gameplay_canvas.enabled = false;
+        GameWin_Canvas .enabled = false;
+        GameOver_Canvas.enabled = false;
+        GameStart_Canvas.enabled = true;
+    }
     // Start is called before the first frame update
     public void CoinCount()
     {
@@ -22,4 +37,31 @@ public class GamePlay_Canvas : MonoBehaviour
         coinText.text = currentCoinCount.ToString();
 
     }
+
+    public void OnPlayBtnClick()
+    {
+        GameStart_Canvas.enabled = false;
+        Gameplay_canvas.enabled = true;
+    }
+
+    public void OnExitBtnClick()
+    {
+        Application.Quit();
+        Debug.Log("Quit");
+    }
+
+    public void OnGameWin()
+    {
+        GameWin_Canvas.enabled = true;
+        Gameplay_canvas.enabled = false;
+    }
+    public void OnRestartBtnClick()
+    {
+        SceneManager.LoadScene("Mario");
+    }
+    public void GameOverEnable()
+    {
+        GameOver_Canvas.enabled = true;
+    }
 }
+

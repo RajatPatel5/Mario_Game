@@ -38,13 +38,12 @@ public class AnimationController : MonoBehaviour
 
     public void PlayerJump()
     {
-        if (IsGrounded)
-        {
+       
            
             Player_Animation.SetTrigger("Jump");
-            Player.velocity = new Vector3(0f,10f, 1f);
+            Player.velocity = new Vector3(0f,6f, 1f);
             IsGrounded = false;
-        }
+        
         
     }
 

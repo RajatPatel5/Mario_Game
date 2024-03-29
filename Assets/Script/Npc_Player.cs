@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 
@@ -21,11 +22,15 @@ public class Npc_player : MonoBehaviour
     public Enemy_AnimationController Enemy_AnimationController;
     public Rigidbody2D Enemy_RB;
     public bool IsenemyattackAnimationOver = false;
-    
+
+    public event Action OnDead;
+
 
 
     void Start()
     {
+        OnDead += Enemydead;
+
         Tg1 = target_Position1;
         currentTargetPosition = target_Position1;
         Enemy_RB = GetComponent<Rigidbody2D>();   
@@ -56,7 +61,7 @@ public class Npc_player : MonoBehaviour
                     Enemy.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 }
 
-                stopDurationTimer = Random.Range(stopDurationMin, stopDurationMax);
+                stopDurationTimer = UnityEngine.Random.Range(stopDurationMin, stopDurationMax);
 
                 isMoving = false;
             }
@@ -75,15 +80,11 @@ public class Npc_player : MonoBehaviour
 
     public void EnemyHealthDown()
     {
-       
-       
-       
-
         if (Enemy_health == 0)
         {
             Enemy_RB.constraints = RigidbodyConstraints2D.FreezeAll; 
             Enemy_AnimationController.Enemy_dead();
-            Enemy.SetActive(false);
+            OnDead.Invoke();
         }
         else
         {
@@ -96,6 +97,14 @@ public class Npc_player : MonoBehaviour
     {
         IsenemyattackAnimationOver = true;
     }
+
+   public void Enemydead()
+    {
+        Enemy.SetActive(false);
+        Debug.Log("Method call"); 
+    }
+
     
+
 }
 

@@ -149,36 +149,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dead_0
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
-        width: 43
-        height: 63
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a979a04380576ed46adf65841772e0a0
-      internalID: 1303578965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Dead_1
       rect:
         serializedVersion: 2
-        x: 163
+        x: 30
         y: 0
-        width: 38
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 66
+        height: 62
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,22 +170,43 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_2
+      name: Dead_3
       rect:
         serializedVersion: 2
-        x: 290
+        x: 150
         y: 0
-        width: 74
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 72
+        height: 59
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2c8c883e458cf04c81bcdebff45360a
-      internalID: 45761940
+      spriteID: bd8f5117047156f44ae00931146dca78
+      internalID: -1737505979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dead_12
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 76
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7423371e7d5069143bdea875b1f5f217
+      internalID: 467584565
       vertices: []
       indices: 
       edges: []
@@ -224,7 +224,20 @@ TextureImporter:
     nameFileIdTable:
       Dead_0: 1303578965
       Dead_1: 1059563029
+      Dead_10: -164997444
+      Dead_11: -1018543763
+      Dead_12: 467584565
+      Dead_13: -283837653
+      Dead_14: 1316845127
+      Dead_15: 638015195
       Dead_2: 45761940
+      Dead_3: -1737505979
+      Dead_4: 60952606
+      Dead_5: -2094007463
+      Dead_6: -55831848
+      Dead_7: 1160163040
+      Dead_8: 942306488
+      Dead_9: 912222161
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
