@@ -12,9 +12,10 @@ public class GoombaWalk : MonoBehaviour
     public GameObject GoombaEnemy;
     public Rigidbody2D Rb;
     public Animator animator;
+    
     // Start is called before the first frame update
     void Start()
-    {
+    {  
         currentPosition = Target1;
         Rb = GetComponent<Rigidbody2D>();
     }
@@ -46,11 +47,11 @@ public class GoombaWalk : MonoBehaviour
 
     public void Head_goomba()
     {
+
         Rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetTrigger("Flat");
       //  GoombaEnemy.SetActive(false);
     }
-    //harshil 
-   
-    }
+ 
+}
 

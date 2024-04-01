@@ -165,7 +165,7 @@ public class JoyStick_Player : MonoBehaviour
     public void OnEnemyAttack()
     {
          
-        if(player_health == 0)
+        if(player_health <1 )
         {
             player_RB.constraints = RigidbodyConstraints2D.FreezeAll;
             Player_Animation.Player_dead(); 
@@ -176,7 +176,7 @@ public class JoyStick_Player : MonoBehaviour
         else
         {
             player_health -= 1;
-            Debug.Log("player" + player_health);
+          
         }
     }
 
@@ -191,8 +191,13 @@ public class JoyStick_Player : MonoBehaviour
         if(collision.gameObject.CompareTag("Goomba"))
         {
             Canvas.healthCount();
+            OnEnemyAttack();
             Player_Animation.Player_Hurt();
 
+        }
+        if (collision.gameObject.CompareTag("Goomba_Head"))
+        {
+            Debug.Log("Hit Goomba Head");
         }
     }
 
